@@ -1,8 +1,25 @@
+title: Stephen Young
+description: Software Engineer • AI • College Football Analytics
+url: https://stephenswyoung.github.io
+baseurl: ""  # keep empty for user sites
+
+# Use Minimal Mistakes as a remote theme on GitHub Pages
 remote_theme: mmistakes/minimal-mistakes
+
+# Minimal Mistakes skin (color palette)
+minimal_mistakes_skin: default # options: air, aqua, contrast, dark, dirt, neon, etc.
+
+# Required plugins for Minimal Mistakes on GitHub Pages
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
-title: Stephen Young
-description: Software Engineer II | M.S. in Artificial Intelligence Candidate, University of Texas at Austin 
-header_pages:
-  - projects.md
+  - jekyll-feed
+
+# Author box (optional)
+author:
+  name: Stephen Young
+  avatar: /assets/images/me.jpg
+  bio: "Software Engineer II @ Walmart Global Tech. I like AI, data, and college football."
+
+# Header masthead links come from _data/navigation.yml
+# (no header_pages setting needed)

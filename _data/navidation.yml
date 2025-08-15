@@ -1,0 +1,7 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "Projects"
+    url: /projects/
+  - title: "LinkedIn"
+    url: https://www.linkedin.com/in/stephen-southworth-young/
