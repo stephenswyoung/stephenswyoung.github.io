@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 title: Stephen Young
 description: Software Engineer II | M.S. in Artificial Intelligence Candidate, University of Texas at Austin 
+header_pages:
+  - projects.md
