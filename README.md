@@ -6,3 +6,5 @@ A little about me
 - 🤘 University of Texas at Austin Graduate
 
 [Email me](stephensouthworthyoung@gmail.com) • [LinkedIn](https://www.linkedin.com/in/stephen-southworth-young/)
+
+![Headshot of Stephen](/assets/images/headshot.jpg)
