@@ -7,4 +7,4 @@ A little about me
 
 [Email me](stephensouthworthyoung@gmail.com) • [LinkedIn](https://www.linkedin.com/in/stephen-southworth-young/)
 
-![Headshot of Stephen](/assets/images/headshot.jpg)
+![Headshot of Stephen](/assets/images/me.jpg)
