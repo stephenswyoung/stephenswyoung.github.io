@@ -1,25 +1,24 @@
 title: Stephen Young
 description: Software Engineer
 url: https://stephenswyoung.github.io
-baseurl: ""  # keep empty for user sites
+baseurl: ""  
 
-# Use Minimal Mistakes as a remote theme on GitHub Pages
+
 remote_theme: mmistakes/minimal-mistakes
 
-# Minimal Mistakes skin (color palette)
-minimal_mistakes_skin: default # options: air, aqua, contrast, dark, dirt, neon, etc.
 
-# Required plugins for Minimal Mistakes on GitHub Pages
+minimal_mistakes_skin: default
+
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-feed
 
-# Author box (optional)
+# Author box
 author:
   name: Stephen Young
-  avatar: /assets/images/me.jpg
+  avatar: /assets/images/author-box/headshot.jpg
   bio: "Software Engineer II @ Walmart Global Tech."
 
 # Header masthead links come from _data/navigation.yml
-# (no header_pages setting needed)
+
