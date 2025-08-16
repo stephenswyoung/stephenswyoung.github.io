@@ -9,172 +9,174 @@
 /* =============================================================================
    THEME TOKENS (palette)
    ========================================================================== */
-:root{
-  --navy:#1E3A8A;           /* brand/dark */
-  --navy-dk:#172554;        /* hover navy */
-  --blue-verylight:#EFF6FF; /* subtle white-blue */
-  --blue-light:#DBEAFE;     /* project cards */
-  --blue-author:#EAF2FF;    /* author box/sidebar */
+:root {
+  --navy: #1E3A8A;            /* brand/dark */
+  --navy-dk: #172554;         /* hover navy */
+  --blue-verylight: #EFF6FF;  /* subtle white-blue */
+  --blue-light: #DBEAFE;      /* project cards */
+  --blue-author: #EAF2FF;     /* author box/sidebar */
 }
 
 /* =============================================================================
    MASTHEAD / NAV (solid blue bar + white links)
    ========================================================================== */
-.masthead{ background: var(--navy); border-bottom: 0; }
-.masthead__inner-wrap{ display:flex; align-items:center; }
-.masthead__menu{ margin-left:0; flex:1; justify-content:flex-start; }
-.greedy-nav{ background:transparent; border:0; box-shadow:none; padding:.3rem .75rem; }
-.greedy-nav a, .greedy-nav .visible-links a{ color:#fff !important; }
-.greedy-nav a:hover, .greedy-nav .visible-links a:hover{ color:var(--blue-verylight) !important; text-decoration:none; }
-.greedy-nav__toggle{ color:#fff; border-color:rgba(255,255,255,.35); }
-.greedy-nav .hidden-links{ background:var(--navy); border:0; }
-.greedy-nav .hidden-links a{ color:#fff !important; }
+.masthead { background: var(--navy); border-bottom: 0; }
+.masthead__inner-wrap { display: flex; align-items: center; }
+.masthead__menu { margin-left: 0; flex: 1; justify-content: flex-start; }
+.greedy-nav { background: transparent; border: 0; box-shadow: none; padding: .3rem .75rem; }
+.greedy-nav a, .greedy-nav .visible-links a { color: #fff !important; }
+.greedy-nav a:hover, .greedy-nav .visible-links a:hover { color: var(--blue-verylight) !important; text-decoration: none; }
+.greedy-nav__toggle { color: #fff; border-color: rgba(255,255,255,.35); }
+.greedy-nav .hidden-links { background: var(--navy); border: 0; }
+.greedy-nav .hidden-links a { color: #fff !important; }
 
 /* Optional: clickable logo replacing text title (only if you added /assets/images/logo.png) */
-.site-title{ font-size:0; }
-.site-title a{
-  display:inline-block;
-  background:url("/assets/images/logo.png") no-repeat center;
-  background-size:contain;
-  width:140px; height:40px; text-indent:-9999px;
+.site-title { font-size: 0; }
+.site-title a {
+  display: inline-block;
+  background: url("/assets/images/logo.png") no-repeat center;
+  background-size: contain;
+  width: 140px; height: 40px; text-indent: -9999px;
 }
 
 /* =============================================================================
    HOME: two-column layout (author box left, content right)
    ========================================================================== */
-.layout--home #main{
-  display:grid;
-  grid-template-columns:320px 1fr; /* left fixed, right flexible */
-  gap:1.25rem;
-  align-items:start;
-  max-width:none !important;
-  width:100% !important;
-  margin:0 !important;
-  padding-left:clamp(12px,2vw,24px);
-  padding-right:clamp(12px,2vw,24px);
+.layout--home #main {
+  display: grid;
+  grid-template-columns: 320px 1fr;  /* left fixed, right flexible */
+  gap: 1.25rem;
+  align-items: start;
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px);
+  padding-right: clamp(12px, 2vw, 24px);
+  padding-top: 2rem;                 /* << adds space under the masthead */
 }
 
 /* Sidebar column */
-.layout--home #main .sidebar{
-  grid-column:1;
-  margin:0 !important;
-  max-width:320px; width:100%;
-  background:var(--blue-author) !important;
-  border:0 !important;
-  border-radius:12px;
-  padding:1rem !important;
-  box-shadow:none !important;
+.layout--home #main .sidebar {
+  grid-column: 1;
+  margin: 0 !important;
+  max-width: 320px; width: 100%;
+  background: var(--blue-author) !important;
+  border: 0 !important;
+  border-radius: 12px;
+  padding: 1rem !important;
+  box-shadow: none !important;
 }
 
 /* Content column */
-.layout--home #main .archive{
-  grid-column:2;
-  margin:0 !important;
-  max-width:none !important;
-  width:100% !important;
-  padding:0; /* rely on #main padding */
+.layout--home #main .archive {
+  grid-column: 2;
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0; /* rely on #main padding */
 }
 
-/* Home title alignment */
-.layout--home #main .archive .page__title{
-  text-align:left !important;
-  margin:0 0 .5rem 0 !important;
-  padding:0 !important;
+/* Home page title alignment and spacing */
+.layout--home #main .archive .page__title {
+  text-align: left !important;
+  margin: 0 0 .75rem 0 !important;
+  padding: 0 !important;
 }
 
 /* Stack on narrow screens */
-@media (max-width:900px){
-  .layout--home #main{ grid-template-columns:1fr; }
+@media (max-width: 900px) {
+  .layout--home #main { grid-template-columns: 1fr; padding-top: 1.25rem; }
   .layout--home #main .sidebar,
-  .layout--home #main .archive{ grid-column:1; max-width:100% !important; }
+  .layout--home #main .archive { grid-column: 1; max-width: 100% !important; }
 }
 
 /* Remove inner whites inside author box parts */
 .layout--home .sidebar .author__avatar,
 .layout--home .sidebar .author__content,
 .layout--home .sidebar .author__urls-wrapper,
-.layout--home .sidebar .author__urls{
-  background:transparent !important;
-  border:0 !important;
-  box-shadow:none !important;
-  padding-left:0; padding-right:0;
+.layout--home .sidebar .author__urls {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding-left: 0; padding-right: 0;
 }
-.layout--home .sidebar .author__avatar img{ border:none; border-radius:50%; }
+.layout--home .sidebar .author__avatar img { border: none; border-radius: 50%; }
 
-/* Add breathing room below masthead for home page title */
-.archive .page__title {
-  margin-top: 2rem;   /* pushes it down */
-  margin-bottom: 1rem; /* optional, space below */
+/* =============================================================================
+   SINGLE PAGES (Resume keeps default MM; others can be customized separately)
+   ========================================================================== */
+/* Titles left-aligned on single pages (safe no matter the width style) */
+.layout--single #main .page__title {
+  text-align: left !important;
+  margin: 0 0 .75rem 0 !important;
+  padding: 0 !important;
+}
+
+.projects-page #main,
+.projects-page #main > .page,
+.projects-page #main > .page .page__inner-wrap,
+.projects-page #main > .page .page__header,
+.projects-page #main > .page .page__content,
+.projects-page #main > .page .wrap {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px) !important;
+  padding-right: clamp(12px, 2vw, 24px) !important;
 }
 
 /* =============================================================================
-   SINGLE PAGES (Projects, etc.) — flush-left/full-width
-   NOTE: excludes Resume by class so Resume stays standard MM layout.
-   Add `classes: page-resume` in resume.md (you already have this for the button).
+   PROJECT CARDS (feature_row) — rounded, thicker borders; clip top corners;
+   HOVER SCALE: entire card (bg + border) grows, not just inner content
    ========================================================================== */
-.layout--single:not(.page-resume) #main,
-.layout--single:not(.page-resume) #main > .page,
-.layout--single:not(.page-resume) #main > .page .page__inner-wrap,
-.layout--single:not(.page-resume) #main > .page .page__header,
-.layout--single:not(.page-resume) #main > .page .page__content,
-.layout--single:not(.page-resume) #main > .page .wrap{
-  max-width:none !important;
-  width:100% !important;
-  margin-left:0 !important;
-  margin-right:0 !important;
-  padding-left:clamp(12px,2vw,24px) !important;
-  padding-right:clamp(12px,2vw,24px) !important;
-}
-.layout--single:not(.page-resume) #main .page__title{
-  text-align:left !important;
-  margin:0 0 .5rem 0 !important;
-  padding:0 !important;
-}
-
-/* =============================================================================
-   PROJECT CARDS (feature_row) — rounded, thicker borders; clip top corners
-   ========================================================================== */
-.feature__wrapper .feature__item{
-  background:var(--blue-light);
-  border:3px solid var(--navy);
-  border-radius:16px;
-  padding:1rem;
-  overflow:hidden; /* ensures teaser image corners clip */
-}
-.feature__wrapper .archive__item-teaser{ margin-bottom:.75rem; overflow:hidden; }
-.feature__wrapper .archive__item-teaser img{
-  display:block; width:100%; height:220px; object-fit:cover; border-radius:0;
-}
-.feature__wrapper .btn, .feature__wrapper .btn--primary{
-  background:var(--navy); border-color:var(--navy); color:#fff !important;
-}
-.feature__wrapper .btn:hover, .feature__wrapper .btn--primary:hover{
-  background:var(--navy-dk); border-color:var(--navy-dk);
-}
-
-/* Project card hover effect */
-.feature__item .archive__item {
+.feature__wrapper { overflow: visible; } /* allow scaled cards to extend */
+.feature__wrapper .feature__item {
+  background: var(--blue-light);
+  border: 3px solid var(--navy);
+  border-radius: 16px;
+  padding: 1rem;
+  overflow: hidden;             /* clip teaser to rounded corners */
+  transform: translateZ(0);     /* create its own stacking context for smooth scale */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+.feature__wrapper .feature__item:hover {
+  transform: scale(1.03);       /* scales border + background + content */
+  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.22);
+  z-index: 1;                   /* lift above neighbors while scaled */
+}
+.feature__wrapper .archive__item-teaser { margin-bottom: .75rem; overflow: hidden; }
+.feature__wrapper .archive__item-teaser img {
+  display: block; width: 100%; height: 220px; object-fit: cover; border-radius: 0;
 }
 
-.feature__item .archive__item:hover {
-  transform: scale(1.03); 
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+/* Buttons on project cards (navy) */
+.feature__wrapper .btn,
+.feature__wrapper .btn--primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff !important;
+}
+.feature__wrapper .btn:hover,
+.feature__wrapper .btn--primary:hover {
+  background: var(--navy-dk);
+  border-color: var(--navy-dk);
 }
 
 /* =============================================================================
    RESUME PAGE — cleaner top-right "Download PDF" action (resume keeps stock layout)
    ========================================================================== */
-.page-resume .resume-actions{
-  display:flex; justify-content:flex-end; margin:0 0 1rem;
+.page-resume .resume-actions {
+  display: flex; justify-content: flex-end; margin: 0 0 1rem;
 }
-.page-resume .resume-actions .btn--primary{
-  background:var(--navy); border-color:var(--navy); color:#fff !important;
+.page-resume .resume-actions .btn--primary {
+  background: var(--navy); border-color: var(--navy); color: #fff !important;
 }
-@media print{ .page-resume .resume-actions{ display:none !important; } }
+@media print { .page-resume .resume-actions { display: none !important; } }
 
 /* =============================================================================
    UTILITIES
    ========================================================================== */
 /* Optional utility to center a specific page title via front matter class */
-.page__title--center{ text-align:center !important; }
+.page__title--center { text-align: center !important; }
