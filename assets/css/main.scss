@@ -17,41 +17,66 @@
   justify-content: flex-start;
 }
 
-/* ==== Projects page (feature_row) cards ==== */
+/* ===== Color Scheme ===== */
+:root {
+  --navy: #1E3A8A;    /* dark navy */
+  --navy-dk: #172554; /* hover navy */
+  --blue-verylight: #EFF6FF; /* very light blue */
+  --blue-light: #DBEAFE; /* light blue */
+} 
+
+/* ===== Project page buttons (feature_row) ===== */
+.feature__wrapper .btn,
+.feature__wrapper .btn--primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff !important;
+}
+.feature__wrapper .btn:hover,
+.feature__wrapper .btn--primary:hover {
+  background: var(--navy-dk);
+  border-color: var(--navy-dk);
+  color: #fff !important;
+}
+
+/* Optional: make the project cards match your palette */
 .feature__wrapper .feature__item {
-  border: 1px solid #1E3A8A;   /* Navy Blue */
-  border-radius: 12px;
-  background: #DBEAFE;
-  padding: 1rem;
+  background: var(--blue-light);
+  border: 2px solid var(--navy);
 }
 
-/* Optional: image teaser inside the card */
-.feature__wrapper .archive__item-teaser {
-  border-radius: 10px;
-  overflow: hidden;            /* clean corners on the image */
-}
-
-/* Hover pop */
-.feature__wrapper .feature__item:hover {
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25); /* navy shadow */
-  transform: translateY(-2px);
-  transition: all .2s ease;
-}
-
-/* ==== Author box ==== */
-.author__profile {
-  border: 2px solid #1E3A8A;
-  border-radius: 12px;
-  background: #DBEAFE;
-  padding: 1rem;
-}
-
-/* ==== Navigation bar ==== */
+/* ===== Nav bar: full-width blue, no border ===== */
 .masthead {
-  border-bottom: 2px solid #1E3A8A;
+  background: var(--navy);
+  border-bottom: 0;            
 }
 .greedy-nav {
-  border: 1px solid #1E3A8A;
-  border-radius: 8px;
-  background: #EFF6FF;  /* very light blue */
+  background: transparent;     /* use masthead's blue */
+  border: 0;                   /* remove inner border */
+  box-shadow: none;
+  padding: .3rem .75rem;
+}
+
+/* Nav links white on blue */
+.greedy-nav a,
+.greedy-nav .visible-links a {
+  color: #fff !important;
+}
+.greedy-nav a:hover,
+.greedy-nav .visible-links a:hover {
+  color: var(--blue-verylight) !important;
+  text-decoration: none;
+}
+
+/* "More" (kebab) menu + hidden links on mobile */
+.greedy-nav__toggle {
+  color: #fff;
+  border-color: rgba(255,255,255,.35);
+}
+.greedy-nav .hidden-links {
+  background: var(--navy);
+  border: 0;
+}
+.greedy-nav .hidden-links a {
+  color: #fff !important;
 }
