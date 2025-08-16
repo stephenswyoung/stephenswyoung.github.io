@@ -24,8 +24,9 @@
   --blue-verylight: #EFF6FF; /* very light blue */
   --blue-light: #DBEAFE; /* light blue */
 } 
+/* ===== PROJECT PAGE ===== */
 
-/* ===== Project page buttons (feature_row) ===== */
+/* Project page buttons (feature_row)  */
 .feature__wrapper .btn,
 .feature__wrapper .btn--primary {
   background: var(--navy);
@@ -39,20 +40,21 @@
   color: #fff !important;
 }
 
-/* Optional: make the project cards match your palette */
+/* Project cards  */
 .feature__wrapper .feature__item {
   background: var(--blue-light);
-  border: 2px solid var(--navy);
+  border: 3px solid var(--navy);   
+  border-radius: 16px;            
 }
 
-/* ===== Nav bar: full-width blue, no border ===== */
+/* ===== NAV BAR ===== */
 .masthead {
   background: var(--navy);
   border-bottom: 0;            
 }
 .greedy-nav {
-  background: transparent;     /* use masthead's blue */
-  border: 0;                   /* remove inner border */
+  background: transparent;     
+  border: 0;                   
   box-shadow: none;
   padding: .3rem .75rem;
 }
