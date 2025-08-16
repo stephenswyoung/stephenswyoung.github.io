@@ -1,32 +1,52 @@
 ---
 ---
-@import "minimal-mistakes/skins/default";  /* use the same skin set in _config.yml */
+/* =============================================================================
+   Minimal Mistakes base imports
+   ========================================================================== */
+@import "minimal-mistakes/skins/default";   /* match `_config.yml` skin */
 @import "minimal-mistakes";
 
-/* Custom overrides */
-.masthead__inner-wrap {
-  display: flex;
-  align-items: center;
-}
-.site-title {
-  display: none;           
-}
-.masthead__menu {
-  margin-left: 0;          
-  flex: 1;                 
-  justify-content: flex-start;
-}
-
-/* ===== Color Scheme ===== */
+/* =============================================================================
+   Theme variables (palette + quick tokens)
+   ========================================================================== */
 :root {
-  --navy: #1E3A8A;    /* dark navy */
-  --navy-dk: #172554; /* hover navy */
-  --blue-verylight: #EFF6FF; /* very light blue */
-  --blue-light: #DBEAFE; /* light blue */
-} 
-/* ===== PROJECT PAGE ===== */
+  --navy: #1E3A8A;          /* dark navy for borders/buttons */
+  --navy-dk: #172554;       /* hover navy */
+  --blue-verylight: #EFF6FF;/* subtle page tint / hover text */
+  --blue-light: #DBEAFE;    /* card + author box background */
+}
 
-/* Project page buttons (feature_row)  */
+/* =============================================================================
+   Global / site-wide tweaks
+   - Masthead/nav
+   - Hide site title (Option A)
+   ========================================================================== */
+
+/* Hide the “Stephen Young” text link and shift nav left */
+.site-title { display: none; }
+.masthead__inner-wrap { display: flex; align-items: center; }
+.masthead__menu { margin-left: 0; flex: 1; justify-content: flex-start; }
+
+/* Nav bar: solid blue bar with white links */
+.masthead { background: var(--navy); border-bottom: 0; }
+.greedy-nav {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: .3rem .75rem;
+}
+.greedy-nav a,
+.greedy-nav .visible-links a { color: #fff !important; }
+.greedy-nav a:hover,
+.greedy-nav .visible-links a:hover { color: var(--blue-verylight) !important; text-decoration: none; }
+.greedy-nav__toggle { color: #fff; border-color: rgba(255,255,255,.35); }
+.greedy-nav .hidden-links { background: var(--navy); border: 0; }
+.greedy-nav .hidden-links a { color: #fff !important; }
+
+/* =============================================================================
+   Buttons
+   - Project cards use MM’s .btn / .btn--primary; make them navy
+   ========================================================================== */
 .feature__wrapper .btn,
 .feature__wrapper .btn--primary {
   background: var(--navy);
@@ -40,45 +60,64 @@
   color: #fff !important;
 }
 
-/* Project cards  */
+/* =============================================================================
+   Projects page (feature_row cards)
+   - Rounded + thicker borders
+   - Fix white top corners (clip children to rounded radius)
+   - Image teaser polish
+   ========================================================================== */
 .feature__wrapper .feature__item {
   background: var(--blue-light);
-  border: 3px solid var(--navy);   
-  border-radius: 16px;            
+  border: 3px solid var(--navy);   /* thicker */
+  border-radius: 16px;             /* rounder corners */
+  padding: 1rem;
+  overflow: hidden;                /* IMPORTANT: clips teaser image to rounded corners */
 }
 
-/* ===== NAV BAR ===== */
-.masthead {
-  background: var(--navy);
-  border-bottom: 0;            
+/* Ensure teaser respects rounding and fills nicely */
+.feature__wrapper .archive__item-teaser {
+  border-radius: 0;                /* parent handles corner rounding via overflow */
+  overflow: hidden;                /* extra safety for nested wrappers */
+  margin-bottom: .75rem;
 }
-.greedy-nav {
-  background: transparent;     
-  border: 0;                   
-  box-shadow: none;
-  padding: .3rem .75rem;
-}
-
-/* Nav links white on blue */
-.greedy-nav a,
-.greedy-nav .visible-links a {
-  color: #fff !important;
-}
-.greedy-nav a:hover,
-.greedy-nav .visible-links a:hover {
-  color: var(--blue-verylight) !important;
-  text-decoration: none;
+.feature__wrapper .archive__item-teaser img {
+  display: block;
+  width: 100%;
+  height: 220px;                   /* consistent tile height; adjust to taste */
+  object-fit: cover;               /* crop nicely without distortion */
 }
 
-/* "More" (kebab) menu + hidden links on mobile */
-.greedy-nav__toggle {
-  color: #fff;
-  border-color: rgba(255,255,255,.35);
+/* Hover elevation */
+.feature__wrapper .feature__item:hover {
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25);
+  transform: translateY(-2px);
+  transition: all .2s ease;
 }
-.greedy-nav .hidden-links {
-  background: var(--navy);
-  border: 0;
+
+/* =============================================================================
+   Author box
+   - Light blue background to match theme
+   - Rounded + bordered
+   ========================================================================== */
+.author__profile {
+  background: var(--blue-light);
+  border: 2px solid var(--navy);
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 900px;     /* wider author box */
+  margin: 0 auto;       /* center it */
 }
-.greedy-nav .hidden-links a {
-  color: #fff !important;
+
+/* If you only want the wider style on home:
+.layout--home .author__profile { max-width: 900px; } */
+
+/* =============================================================================
+   Layout polish
+   - Slightly wider content on single-column pages for better alignment
+   ========================================================================== */
+.layout--single .page__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

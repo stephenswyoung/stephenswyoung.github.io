@@ -1,5 +1,5 @@
 ---
-title: Hi, I’m Stephen Young 👋
+title: Hi, I’m Stephen 👋
 layout: single
 author_profile: true
 ---
