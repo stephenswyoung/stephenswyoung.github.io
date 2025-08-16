@@ -7,4 +7,4 @@ A little about me
 - 🤖 Interested in Machine Learning and AI  
 - 🤘 University of Texas at Austin Graduate
 
-![Headshot of Stephen](/assets/images/me.jpg)
+![Headshot of Stephen](/assets/images/home/me.jpg)

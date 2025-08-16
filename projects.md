@@ -29,8 +29,6 @@ feature_row:
     btn_class: "btn--primary"
 ---
 
-# Projects
-
-A few things I’ve built and researched. Each card includes a quick summary, tech used, and links to the paper or write-up.
+A few things I’ve built and researched. Each card includes a quick summary, tech used, and links to the paper or write-up. Thanks for checking it out!
 
 {% include feature_row %}
