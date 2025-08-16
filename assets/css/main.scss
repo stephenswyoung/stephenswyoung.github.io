@@ -188,3 +188,49 @@
    ========================================================================== */
 /* Optional utility to center a specific page title via front matter class */
 .page__title--center { text-align: center !important; }
+
+/* =============================================================================
+   PROJECTS — title flush-left (projects-only; doesn't touch Resume)
+   (Relies on `classes: projects-page` in projects.md)
+   ========================================================================== */
+
+/* Remove any centered width constraints for this page */
+.projects-page #main,
+.projects-page #main > .page,
+.projects-page #main > .page > .page__inner-wrap,
+.projects-page #main > .page > .page__inner-wrap > header,
+.projects-page #main > .page > .page__content {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Consistent left/right gutters for the page content area */
+.projects-page #main > .page > .page__inner-wrap,
+.projects-page #main > .page > .page__content {
+  padding-left: clamp(12px, 2vw, 24px) !important;
+  padding-right: clamp(12px, 2vw, 24px) !important;
+}
+
+/* Header wrapper: strip stray offsets */
+.projects-page #main > .page > .page__inner-wrap > header {
+  padding: 0 !important;
+  margin: 0 0 .5rem 0 !important;
+}
+
+/* Actual H1: make it truly flush-left */
+.projects-page #page-title,
+.projects-page .page__title {
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Link inside the H1 shouldn’t add spacing either */
+.projects-page .page__title > a {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
