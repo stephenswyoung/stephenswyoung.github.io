@@ -18,310 +18,147 @@
 }
 
 /* =============================================================================
-   GLOBAL LAYOUT — left-aligned + responsive
-   - Remove "centered column" look
-   - Keep all titles aligned with the content column
-   ========================================================================== */
-.initial-content .page,
-.page,
-.page__header,
-.page__content,
-.page__inner-wrap{
-  max-width: none !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-
-/* MM wraps page headers in .wrap; make that left-aligned too */
-.page__header .wrap{
-  max-width: none !important;
-  margin: 0 !important;
-  padding-left: 0 !important;  /* header already gets padding from .page__header */
-  padding-right: 0 !important;
-}
-
-/* Align ALL page titles with the content column */
-.page__title{
-  text-align: left !important;
-  margin: 0 0 .5rem 0 !important;
-  padding: 0 !important;
-}
-
-/* Single-page layouts (Projects, Resume) inherit the same left alignment */
-.layout--single .page__header,
-.layout--single .page__content{
-  max-width: none !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-.layout--single .page__header .wrap{  /* header wrapper on single pages */
-  max-width: none !important;
-  margin: 0 !important;
-  padding-left: 0 !important; padding-right: 0 !important;
-}
-.layout--single .page__title{
-  text-align: left !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-
-/* Optional readability cap on ultra-wide screens (delete if you want full bleed) */
-@media (min-width: 1600px){
-  .page__content{ max-width: 1600px; }
-}
-
-/* =============================================================================
    MASTHEAD / NAV (solid blue bar + white links)
    ========================================================================== */
 .masthead{ background: var(--navy); border-bottom: 0; }
-.masthead__inner-wrap{ display: flex; align-items: center; }
-.masthead__menu{ margin-left: 0; flex: 1; justify-content: flex-start; }
-.greedy-nav{ background: transparent; border: 0; box-shadow: none; padding: .3rem .75rem; }
-.greedy-nav a, .greedy-nav .visible-links a{ color: #fff !important; }
-.greedy-nav a:hover, .greedy-nav .visible-links a:hover{ color: var(--blue-verylight) !important; text-decoration: none; }
-.greedy-nav__toggle{ color:#fff; border-color: rgba(255,255,255,.35); }
-.greedy-nav .hidden-links{ background: var(--navy); border: 0; }
+.masthead__inner-wrap{ display:flex; align-items:center; }
+.masthead__menu{ margin-left:0; flex:1; justify-content:flex-start; }
+.greedy-nav{ background:transparent; border:0; box-shadow:none; padding:.3rem .75rem; }
+.greedy-nav a, .greedy-nav .visible-links a{ color:#fff !important; }
+.greedy-nav a:hover, .greedy-nav .visible-links a:hover{ color:var(--blue-verylight) !important; text-decoration:none; }
+.greedy-nav__toggle{ color:#fff; border-color:rgba(255,255,255,.35); }
+.greedy-nav .hidden-links{ background:var(--navy); border:0; }
 .greedy-nav .hidden-links a{ color:#fff !important; }
 
 /* Optional: clickable logo replacing text title (only if you added /assets/images/logo.png) */
-.site-title{ font-size: 0; }
+.site-title{ font-size:0; }
 .site-title a{
-  display: inline-block;
-  background: url("/assets/images/logo.png") no-repeat center;
-  background-size: contain;
-  width: 140px; height: 40px; text-indent: -9999px;
+  display:inline-block;
+  background:url("/assets/images/logo.png") no-repeat center;
+  background-size:contain;
+  width:140px; height:40px; text-indent:-9999px;
 }
 
 /* =============================================================================
-   HOME LAYOUT — author box fixed on the LEFT, content fills the rest
+   HOME: two-column layout (author box left, content right)
    ========================================================================== */
-.layout--home .page__inner-wrap{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.25rem;
+.layout--home #main{
+  display:grid;
+  grid-template-columns:320px 1fr; /* left fixed, right flexible */
+  gap:1.25rem;
+  align-items:start;
+  max-width:none !important;
+  width:100% !important;
+  margin:0 !important;
+  padding-left:clamp(12px,2vw,24px);
+  padding-right:clamp(12px,2vw,24px);
 }
 
-/* Left column (author box column) */
-.layout--home .sidebar{
-  order: 0;
-  flex: 0 0 320px;   /* fixed width; adjust 280–360px to taste */
-  max-width: 320px;
-  background: var(--blue-author) !important; /* paint the whole sidebar */
-  border: 0 !important;
-  border-radius: 12px;
-  padding: 1rem !important;
-  box-shadow: none !important;
+/* Sidebar column */
+.layout--home #main .sidebar{
+  grid-column:1;
+  margin:0 !important;
+  max-width:320px; width:100%;
+  background:var(--blue-author) !important;
+  border:0 !important;
+  border-radius:12px;
+  padding:1rem !important;
+  box-shadow:none !important;
 }
 
-/* Main content hugs the right of the author column and expands */
-.layout--home .page__content{
-  order: 1;
-  flex: 1 1 auto;
-  max-width: none;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+/* Content column */
+.layout--home #main .archive{
+  grid-column:2;
+  margin:0 !important;
+  max-width:none !important;
+  width:100% !important;
+  padding:0; /* rely on #main padding */
 }
 
-/* Stack for mobile */
-@media (max-width: 768px){
-  .layout--home .page__inner-wrap{ flex-direction: column; }
-  .layout--home .sidebar,
-  .layout--home .page__content{ max-width: 100%; flex: 1 1 auto; }
+/* Home title alignment */
+.layout--home #main .archive .page__title{
+  text-align:left !important;
+  margin:0 0 .5rem 0 !important;
+  padding:0 !important;
 }
 
-/* Remove inner whites inside the author components */
+/* Stack on narrow screens */
+@media (max-width:900px){
+  .layout--home #main{ grid-template-columns:1fr; }
+  .layout--home #main .sidebar,
+  .layout--home #main .archive{ grid-column:1; max-width:100% !important; }
+}
+
+/* Remove inner whites inside author box parts */
 .layout--home .sidebar .author__avatar,
 .layout--home .sidebar .author__content,
 .layout--home .sidebar .author__urls-wrapper,
 .layout--home .sidebar .author__urls{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  padding-left: 0; padding-right: 0;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  padding-left:0; padding-right:0;
 }
+.layout--home .sidebar .author__avatar img{ border:none; border-radius:50%; }
 
-/* Keep headshot unchanged (no extra ring) */
-.layout--home .sidebar .author__avatar img{
-  border: none; border-radius: 50%;
+/* =============================================================================
+   SINGLE PAGES (Projects, etc.) — flush-left/full-width
+   NOTE: excludes Resume by class so Resume stays standard MM layout.
+   Add `classes: page-resume` in resume.md (you already have this for the button).
+   ========================================================================== */
+.layout--single:not(.page-resume) #main,
+.layout--single:not(.page-resume) #main > .page,
+.layout--single:not(.page-resume) #main > .page .page__inner-wrap,
+.layout--single:not(.page-resume) #main > .page .page__header,
+.layout--single:not(.page-resume) #main > .page .page__content,
+.layout--single:not(.page-resume) #main > .page .wrap{
+  max-width:none !important;
+  width:100% !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  padding-left:clamp(12px,2vw,24px) !important;
+  padding-right:clamp(12px,2vw,24px) !important;
+}
+.layout--single:not(.page-resume) #main .page__title{
+  text-align:left !important;
+  margin:0 0 .5rem 0 !important;
+  padding:0 !important;
 }
 
 /* =============================================================================
    PROJECT CARDS (feature_row) — rounded, thicker borders; clip top corners
    ========================================================================== */
 .feature__wrapper .feature__item{
-  background: var(--blue-light);
-  border: 3px solid var(--navy);
-  border-radius: 16px;
-  padding: 1rem;
-  overflow: hidden; 
+  background:var(--blue-light);
+  border:3px solid var(--navy);
+  border-radius:16px;
+  padding:1rem;
+  overflow:hidden; /* ensures teaser image corners clip */
 }
-.feature__wrapper .archive__item-teaser{
-  margin-bottom: .75rem; overflow: hidden;
-}
+.feature__wrapper .archive__item-teaser{ margin-bottom:.75rem; overflow:hidden; }
 .feature__wrapper .archive__item-teaser img{
-  display: block; width: 100%; height: 220px; object-fit: cover; border-radius: 0;
+  display:block; width:100%; height:220px; object-fit:cover; border-radius:0;
 }
 .feature__wrapper .btn, .feature__wrapper .btn--primary{
-  background: var(--navy); border-color: var(--navy); color: #fff !important;
+  background:var(--navy); border-color:var(--navy); color:#fff !important;
 }
 .feature__wrapper .btn:hover, .feature__wrapper .btn--primary:hover{
-  background: var(--navy-dk); border-color: var(--navy-dk);
+  background:var(--navy-dk); border-color:var(--navy-dk);
 }
 
 /* =============================================================================
-   RESUME PAGE — clean top-right "Download PDF" action
+   RESUME PAGE — cleaner top-right "Download PDF" action (resume keeps stock layout)
    ========================================================================== */
 .page-resume .resume-actions{
-  display: flex; justify-content: flex-end; margin: 0 0 1rem;
+  display:flex; justify-content:flex-end; margin:0 0 1rem;
 }
 .page-resume .resume-actions .btn--primary{
-  background: var(--navy); border-color: var(--navy); color: #fff !important;
+  background:var(--navy); border-color:var(--navy); color:#fff !important;
 }
-@media print{ .page-resume .resume-actions{ display: none !important; } }
+@media print{ .page-resume .resume-actions{ display:none !important; } }
 
 /* =============================================================================
    UTILITIES
    ========================================================================== */
-/* Center a specific page title by adding this class in page front matter (optional) */
-.page__title--center{ text-align: center !important; }
-
-/* =============================================================================
-   HOME: make #main a 2-col layout (sidebar on the left, content starts next to it)
-   ========================================================================== */
-
-/* Turn the #main container into a responsive 2-column grid on the home page */
-.layout--home #main {
-  display: grid;
-  grid-template-columns: 320px 1fr;   /* left fixed (sidebar), right flexible (content) */
-  gap: 1.25rem;
-  align-items: start;
-  /* remove any stray centering constraints */
-  max-width: none !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px);
-  padding-right: clamp(12px, 2vw, 24px);
-}
-
-/* Sidebar column: keep your sticky behavior and remove extra margins */
-.layout--home #main .sidebar {
-  grid-column: 1;
-  margin: 0 !important;
-  max-width: 320px;
-  width: 100%;
-  /* keep your blue author box look if you set it earlier */
-  background: var(--blue-author, transparent);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-/* Content column: start exactly where the sidebar ends, no side whitespace */
-.layout--home #main .archive {
-  grid-column: 2;
-  margin: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  padding: 0; /* relies on #main padding */
-}
-
-/* Home page title alignment */
-.layout--home #main .archive .page__title {
-  text-align: left !important;
-  margin: 0 0 .5rem 0 !important;
-  padding: 0 !important;
-}
-
-/* Stack on narrow screens */
-@media (max-width: 900px) {
-  .layout--home #main {
-    grid-template-columns: 1fr; /* single column */
-  }
-  .layout--home #main .sidebar,
-  .layout--home #main .archive {
-    grid-column: 1;
-    max-width: 100% !important;
-  }
-}
-
-/* =============================================================================
-   PROJECTS & RESUME: left-align page header and remove centered constraints
-   ========================================================================== */
-
-/* Remove MM's centered container feel on single pages */
-.layout--single .page__header,
-.layout--single .page__content,
-.layout--single .page__header .wrap,
-.layout--single .page__inner-wrap {
-  max-width: none !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-
-/* Align titles for Projects and Resume */
-.layout--single .page__title {
-  text-align: left !important;
-  margin: 0 0 .5rem 0 !important;
-  padding: 0 !important;
-}
-
-/* =============================================================================
-   PROJECTS PAGE: left-align like resume (no sidebar present)
-   ========================================================================== */
-
-.layout--projects #main,
-.layout--projects #main .archive,
-.layout--projects #main .page__inner-wrap {
-  max-width: none !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-
-/* Ensure the page title is aligned left */
-.layout--projects #main .page__title {
-  text-align: left !important;
-  margin: 0 0 .5rem 0 !important;
-  padding: 0 !important;
-}
-
-/* =============================================================================
-   PROJECTS (layout: single) — flush-left, no centered container
-   Targets the exact structure you posted:
-   #main > article.page > .page__inner-wrap > header + section.page__content
-   ========================================================================== */
-
-.layout--single #main,
-.layout--single #main > .page,
-.layout--single #main > .page .page__inner-wrap,
-.layout--single #main > .page .page__header,
-.layout--single #main > .page .page__content,
-.layout--single #main > .page .wrap {
-  max-width: none !important;     /* remove the theme's width cap */
-  width: 100% !important;
-  margin-left: 0 !important;      /* kill auto-centering */
-  margin-right: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;  /* responsive gutter */
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-
-/* Title alignment for Projects (and other single pages) */
-.layout--single #main .page__title {
-  text-align: left !important;
-  margin: 0 0 .5rem 0 !important;
-  padding: 0 !important;
-}
-
-/* Make the feature cards sit flush with this left alignment too */
-.layout--single #main .feature__wrapper {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
+/* Optional utility to center a specific page title via front matter class */
+.page__title--center{ text-align:center !important; }

@@ -2,7 +2,7 @@
 title: Projects
 layout: single
 permalink: /projects/
-classes: wide
+classes: projects-page
 author_profile: false
 
 feature_row:
