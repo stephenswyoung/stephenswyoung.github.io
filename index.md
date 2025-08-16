@@ -1,6 +1,6 @@
 ---
 title: Hi, I’m Stephen 👋
-layout: single
+layout: home
 author_profile: true
 ---
 A little about me
@@ -9,4 +9,4 @@ A little about me
 - 🤖 Interested in Machine Learning and AI  
 - 🤘 University of Texas at Austin Graduate and an all things Longhorns lover
 
-![Headshot of Stephen](/assets/images/home/me.jpg)
+![Photo of Stephen](/assets/images/home/me.jpg)

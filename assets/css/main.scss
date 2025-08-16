@@ -3,137 +3,194 @@
 /* =============================================================================
    Minimal Mistakes base imports
    ========================================================================== */
-@import "minimal-mistakes/skins/default";   /* match `_config.yml` skin */
+@import "minimal-mistakes/skins/default"; /* match _config.yml */
 @import "minimal-mistakes";
 
 /* =============================================================================
-   Theme variables (palette + quick tokens)
+   THEME TOKENS (palette)
    ========================================================================== */
-:root {
-  --navy: #1E3A8A;          /* dark navy for borders/buttons */
-  --navy-dk: #172554;       /* hover navy */
-  --blue-verylight: #EFF6FF;/* subtle page tint / hover text */
-  --blue-light: #DBEAFE;    /* card + author box background */
+:root{
+  --navy:#1E3A8A;           /* dark border / brand */
+  --navy-dk:#172554;        /* hover navy */
+  --blue-verylight:#EFF6FF; /* very light bg */
+  --blue-light:#DBEAFE;     /* cards + author */
 }
 
 /* =============================================================================
-   Global / site-wide tweaks
-   - Masthead/nav
-   - Hide site title (Option A)
+   GLOBAL CONTAINERS + TITLES
+   - Align titles with content and make layout responsive
    ========================================================================== */
-.site-title {
-  font-size: 0;    
-}
 
-.site-title a {
-  display: inline-block;
-  background: url("/assets/images/mast-head/logo.png") no-repeat center;
-  background-size: contain;   /* ensures proper scaling */
-  width: 140px;               /* adjust width for your logo */
-  height: 40px;               /* adjust height for your logo */
-  text-indent: -9999px;       /* accessibility-safe text hiding */
-}
-.masthead__inner-wrap { display: flex; align-items: center; }
-.masthead__menu { margin-left: 0; flex: 1; justify-content: flex-start; }
-
-/* Nav bar: solid blue bar with white links */
-.masthead { background: var(--navy); border-bottom: 0; }
-.greedy-nav {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  padding: .3rem .75rem;
-}
-.greedy-nav a,
-.greedy-nav .visible-links a { color: #fff !important; }
-.greedy-nav a:hover,
-.greedy-nav .visible-links a:hover { color: var(--blue-verylight) !important; text-decoration: none; }
-.greedy-nav__toggle { color: #fff; border-color: rgba(255,255,255,.35); }
-.greedy-nav .hidden-links { background: var(--navy); border: 0; }
-.greedy-nav .hidden-links a { color: #fff !important; }
-
-/* Reset page title alignment */
-.page__title {
-  text-align: left;     /* aligned with content column */
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/* =============================================================================
-   Buttons
-   - Project cards use MM’s .btn / .btn--primary; make them navy
-   ========================================================================== */
-.feature__wrapper .btn,
-.feature__wrapper .btn--primary {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff !important;
-}
-.feature__wrapper .btn:hover,
-.feature__wrapper .btn--primary:hover {
-  background: var(--navy-dk);
-  border-color: var(--navy-dk);
-  color: #fff !important;
-}
-
-/* =============================================================================
-   Projects page (feature_row cards)
-   - Rounded + thicker borders
-   - Fix white top corners (clip children to rounded radius)
-   - Image teaser polish
-   ========================================================================== */
-.feature__wrapper .feature__item {
-  background: var(--blue-light);
-  border: 3px solid var(--navy);   /* thicker */
-  border-radius: 16px;             /* rounder corners */
-  padding: 1rem;
-  overflow: hidden;                /* IMPORTANT: clips teaser image to rounded corners */
-}
-
-/* Ensure teaser respects rounding and fills nicely */
-.feature__wrapper .archive__item-teaser {
-  border-radius: 0;                /* parent handles corner rounding via overflow */
-  overflow: hidden;                /* extra safety for nested wrappers */
-  margin-bottom: .75rem;
-}
-.feature__wrapper .archive__item-teaser img {
-  display: block;
-  width: 100%;
-  height: 220px;                   /* consistent tile height; adjust to taste */
-  object-fit: cover;               /* crop nicely without distortion */
-}
-
-/* Hover elevation */
-.feature__wrapper .feature__item:hover {
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25);
-  transform: translateY(-2px);
-  transition: all .2s ease;
-}
-
-/* =============================================================================
-   Author box
-   - Light blue background to match theme
-   - Rounded + bordered
-   ========================================================================== */
-.author__profile {
-  background: var(--blue-light);
-  border: 2px solid var(--navy);
-  border-radius: 12px;
-  padding: 1rem;
-  max-width: 900px;     /* wider author box */
-  margin: 0 auto;       /* center it */
-}
-
-/* If you only want the wider style on home:
-.layout--home .author__profile { max-width: 900px; } */
-
-/* =============================================================================
-   Layout polish
-   - Slightly wider content on single-column pages for better alignment
-   ========================================================================== */
-.layout--single .page__content {
+/* Align page header and content to the same centered container */
+.page__header,
+.page__content{
   max-width: 1200px;
   margin: 0 auto;
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+/* Page title alignment (no odd offsets) */
+.page__title{
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Optional: add 'page__title--center' in front matter to center a specific title */
+.page__title--center{ text-align:center; }
+
+/* On very wide screens, allow content to breathe a bit more */
+@media (min-width: 1400px){
+  .page__header,
+  .page__content{ max-width: 1320px; }
+}
+
+/* =============================================================================
+   MASTHEAD / NAV
+   - Solid blue bar, white links, logo support
+   ========================================================================== */
+
+/* Hide text title (we'll replace with a clickable logo) */
+.site-title{ font-size:0; }
+
+/* Clickable logo (add /assets/images/logo.png) */
+.site-title a{
+  display:inline-block;
+  background:url("/assets/images/logo.png") no-repeat center;
+  background-size:contain;
+  width:140px; /* adjust to your logo */
+  height:40px; /* adjust to your logo */
+  text-indent:-9999px;
+}
+
+.masthead{ background:var(--navy); border-bottom:0; }
+.masthead__inner-wrap{ display:flex; align-items:center; }
+.masthead__menu{ margin-left:0; flex:1; justify-content:flex-start; }
+
+.greedy-nav{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  padding:.3rem .75rem;
+}
+.greedy-nav a,
+.greedy-nav .visible-links a{ color:#fff !important; }
+.greedy-nav a:hover,
+.greedy-nav .visible-links a:hover{ color:var(--blue-verylight) !important; text-decoration:none; }
+.greedy-nav__toggle{ color:#fff; border-color:rgba(255,255,255,.35); }
+.greedy-nav .hidden-links{ background:var(--navy); border:0; }
+.greedy-nav .hidden-links a{ color:#fff !important; }
+
+/* =============================================================================
+   HOME LAYOUT (two-column, responsive)
+   - Author box on the far left, content uses remaining width
+   ========================================================================== */
+
+.layout--home .page__inner-wrap{
+  display:flex;
+  flex-direction:row;
+  align-items:flex-start;
+  gap:1.25rem;
+}
+
+/* Left sidebar column (holds the author box) */
+.layout--home .sidebar{
+  order:0;
+  flex:0 0 320px;
+  max-width:320px;
+}
+
+/* Main content expands to reduce whitespace */
+.layout--home .page__content{
+  order:1;
+  flex:1 1 auto;
+  max-width:none;
+  width:100%;
+  padding-left:0;
+  padding-right:0;
+}
+
+/* Stack on mobile */
+@media (max-width: 768px){
+  .layout--home .page__inner-wrap{ flex-direction:column; }
+  .layout--home .sidebar,
+  .layout--home .page__content{ max-width:100%; flex:1 1 auto; }
+}
+
+/* =============================================================================
+   AUTHOR BOX
+   - Light blue background + navy border, wider on home
+   ========================================================================== */
+
+.author__profile,
+.author__content{ /* cover inner wrapper too so it doesn't look white */
+  background:var(--blue-light);
+  border:2px solid var(--navy);
+  border-radius:12px;
+}
+
+/* Padding + width tuning */
+.author__profile{
+  padding:1rem;
+}
+
+/* Wider & left-aligned on home (since it sits in the sidebar) */
+.layout--home .author__profile{
+  width:100%;
+  margin:0;
+}
+
+/* =============================================================================
+   PROJECT CARDS (feature_row)
+   - Rounded, thicker borders, fix white top corners, image polish
+   ========================================================================== */
+
+.feature__wrapper .feature__item{
+  background:var(--blue-light);
+  border:3px solid var(--navy);
+  border-radius:16px;
+  padding:1rem;
+  overflow:hidden; /* CRITICAL: clips the image so top corners aren't white */
+}
+
+/* Teaser image fills and respects rounded corners */
+.feature__wrapper .archive__item-teaser{
+  margin-bottom:.75rem;
+  overflow:hidden;
+}
+.feature__wrapper .archive__item-teaser img{
+  display:block;
+  width:100%;
+  height:220px;         /* adjust to taste */
+  object-fit:cover;
+  border-radius:0;      /* clipping handled by parent overflow */
+}
+
+/* Button color on project cards */
+.feature__wrapper .btn,
+.feature__wrapper .btn--primary{
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff !important;
+}
+.feature__wrapper .btn:hover,
+.feature__wrapper .btn--primary:hover{
+  background:var(--navy-dk);
+  border-color:var(--navy-dk);
+  color:#fff !important;
+}
+
+/* Hover elevation on cards */
+.feature__wrapper .feature__item:hover{
+  box-shadow:0 6px 20px rgba(30,58,138,.25);
+  transform:translateY(-2px);
+  transition:all .2s ease;
+}
+
+/* =============================================================================
+   UTILITIES
+   ========================================================================== */
+
+/* Optional: center a given page title by adding 'page__title--center' class */
+.page__title--center{ text-align:center; }
