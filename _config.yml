@@ -1,5 +1,5 @@
 title: Stephen Young
-description: Software Engineer • AI • College Football Analytics
+description: Software Engineer
 url: https://stephenswyoung.github.io
 baseurl: ""  # keep empty for user sites
 
@@ -19,7 +19,7 @@ plugins:
 author:
   name: Stephen Young
   avatar: /assets/images/me.jpg
-  bio: "Software Engineer II @ Walmart Global Tech. I like AI, data, and college football."
+  bio: "Software Engineer II @ Walmart Global Tech."
 
 # Header masthead links come from _data/navigation.yml
 # (no header_pages setting needed)
