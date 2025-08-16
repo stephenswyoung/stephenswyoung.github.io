@@ -13,125 +13,115 @@
   --navy:#1E3A8A;           /* brand/dark */
   --navy-dk:#172554;        /* hover navy */
   --blue-verylight:#EFF6FF; /* subtle white-blue */
-  --blue-light:#DBEAFE;     /* cards (projects) */
-  --blue-author:#EAF2FF;    /* softer blue for author box */
+  --blue-light:#DBEAFE;     /* project cards */
+  --blue-author:#EAF2FF;    /* author box (lighter than cards) */
 }
 
 /* =============================================================================
    GLOBAL LAYOUT — left-aligned + responsive
-   - Removes the centered column feel; aligns content/titles to the left
+   - Remove the centered column feel everywhere
    ========================================================================== */
 .page__inner-wrap,
 .page__header,
-.page__content {
-  max-width: none;            /* allow full width */
+.page__content{
+  max-width: none;
   width: 100%;
-  margin: 0;                  /* no auto-centering */
+  margin: 0;
   padding-left: clamp(12px, 2vw, 24px);
   padding-right: clamp(12px, 2vw, 24px);
 }
 
-/* Keep page titles aligned with content (no stray centering) */
-.page__title {
+/* Align ALL page titles with the content column */
+.page__title{
   text-align: left !important;
   margin: 0 0 .5rem 0 !important;
   padding: 0 !important;
 }
 
-/* Optional: cap readability on ultra-wide screens (remove if you want full bleed) */
-@media (min-width: 1600px){
-  .page__content { max-width: 1600px; }
+/* Make sure single-page layouts (Projects, Resume) inherit the same alignment */
+.layout--single .page__header,
+.layout--single .page__content{
+  max-width: none !important;
+  margin: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px) !important;
+  padding-right: clamp(12px, 2vw, 24px) !important;
+}
+.layout--single .page__title{
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* =============================================================================
-   MASTHEAD / NAV (unchanged look; keeps your blue bar + white links)
+   MASTHEAD / NAV (keeps your blue bar + white links)
    ========================================================================== */
-.masthead { background: var(--navy); border-bottom: 0; }
-.masthead__inner-wrap { display: flex; align-items: center; }
-.masthead__menu { margin-left: 0; flex: 1; justify-content: flex-start; }
-.greedy-nav { background: transparent; border: 0; box-shadow: none; padding: .3rem .75rem; }
-.greedy-nav a,
-.greedy-nav .visible-links a { color: #fff !important; }
-.greedy-nav a:hover,
-.greedy-nav .visible-links a:hover { color: var(--blue-verylight) !important; text-decoration: none; }
-.greedy-nav__toggle { color: #fff; border-color: rgba(255,255,255,.35); }
-.greedy-nav .hidden-links { background: var(--navy); border: 0; }
-.greedy-nav .hidden-links a { color: #fff !important; }
+.masthead{ background: var(--navy); border-bottom: 0; }
+.masthead__inner-wrap{ display: flex; align-items: center; }
+.masthead__menu{ margin-left: 0; flex: 1; justify-content: flex-start; }
+.greedy-nav{ background: transparent; border: 0; box-shadow: none; padding: .3rem .75rem; }
+.greedy-nav a, .greedy-nav .visible-links a{ color: #fff !important; }
+.greedy-nav a:hover, .greedy-nav .visible-links a:hover{ color: var(--blue-verylight) !important; text-decoration: none; }
+.greedy-nav__toggle{ color:#fff; border-color: rgba(255,255,255,.35); }
+.greedy-nav .hidden-links{ background: var(--navy); border: 0; }
+.greedy-nav .hidden-links a{ color:#fff !important; }
 
-/* Replace text site-title with a clickable logo (optional; keep if you added logo.png) */
-.site-title { font-size: 0; }
-.site-title a {
+/* Optional: clickable logo replacing text title (only if you added /assets/images/logo.png) */
+.site-title{ font-size: 0; }
+.site-title a{
   display: inline-block;
   background: url("/assets/images/logo.png") no-repeat center;
   background-size: contain;
-  width: 140px;  /* adjust to your logo width */
-  height: 40px;  /* adjust to your logo height */
-  text-indent: -9999px;
+  width: 140px; height: 40px; text-indent: -9999px;
 }
 
 /* =============================================================================
    HOME LAYOUT — author column on the far left
-   - Sidebar (author box) fixed width on the left; main content uses remaining space
    ========================================================================== */
 .layout--home .page__inner-wrap{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.25rem;
+  display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem;
 }
-
-/* Left sidebar column */
 .layout--home .sidebar{
-  order: 0;
-  flex: 0 0 320px;
-  max-width: 320px;
+  order: 0; flex: 0 0 320px; max-width: 320px; /* left column */
 }
-
-/* Main content grows; reduces whitespace */
 .layout--home .page__content{
-  order: 1;
-  flex: 1 1 auto;
-  max-width: none;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+  order: 1; flex: 1 1 auto; max-width: none; width: 100%;
+  padding-left: 0; padding-right: 0;
 }
-
-/* Stack author above content on mobile */
 @media (max-width: 768px){
   .layout--home .page__inner-wrap{ flex-direction: column; }
-  .layout--home .sidebar,
-  .layout--home .page__content{ max-width: 100%; flex: 1 1 auto; }
+  .layout--home .sidebar, .layout--home .page__content{ max-width: 100%; flex: 1 1 auto; }
 }
 
 /* =============================================================================
-   AUTHOR BOX — entire box light blue (no white inner sections), no border
+   AUTHOR BOX — entire box light blue (no white inside), no border
    ========================================================================== */
-/* Outer wrapper */
-.layout--home .author__profile{
+/* Target the exact structure MM outputs in the home sidebar */
+.layout--home .sidebar .author__profile{
   background: var(--blue-author) !important;
   border: 0 !important;
   border-radius: 12px;
   padding: 1.25rem 1rem;
-  color: #0f172a;
   box-shadow: none !important;
-  margin: 0; /* flush in the left column */
+  margin: 0; /* flush to the left column */
+  color: #0f172a;
 }
 
-/* Nuke inner white panels MM adds */
-.layout--home .author__content,
-.layout--home .author__bio,
-.layout--home .author__urls-wrapper,
-.layout--home .author__urls{
+/* Remove any inner white panels */
+.layout--home .sidebar .author__profile > .author__avatar,
+.layout--home .sidebar .author__profile > .author__content,
+.layout--home .sidebar .author__profile .author__bio,
+.layout--home .sidebar .author__profile .author__urls-wrapper,
+.layout--home .sidebar .author__profile .author__urls{
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
+  padding-left: 0; padding-right: 0;
 }
 
-/* Keep avatar circular with a subtle brand ring (optional) */
-.layout--home .author__avatar img{
+/* Keep avatar circular, but no extra border ring */
+.layout--home .sidebar .author__avatar img{
   border-radius: 50%;
-  border: 3px solid var(--navy);
+  border: none;
 }
 
 /* =============================================================================
@@ -145,46 +135,31 @@
   overflow: hidden; /* ensures teaser image corners clip */
 }
 .feature__wrapper .archive__item-teaser{
-  margin-bottom: .75rem;
-  overflow: hidden;
+  margin-bottom: .75rem; overflow: hidden;
 }
 .feature__wrapper .archive__item-teaser img{
-  display: block;
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 0;
+  display: block; width: 100%; height: 220px; object-fit: cover; border-radius: 0;
 }
-/* Buttons on project cards (navy) */
-.feature__wrapper .btn,
-.feature__wrapper .btn--primary{
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff !important;
+.feature__wrapper .btn, .feature__wrapper .btn--primary{
+  background: var(--navy); border-color: var(--navy); color: #fff !important;
 }
-.feature__wrapper .btn:hover,
-.feature__wrapper .btn--primary:hover{
-  background: var(--navy-dk);
-  border-color: var(--navy-dk);
+.feature__wrapper .btn:hover, .feature__wrapper .btn--primary:hover{
+  background: var(--navy-dk); border-color: var(--navy-dk);
 }
 
 /* =============================================================================
    RESUME PAGE — cleaner top-right "Download PDF" action
    ========================================================================== */
 .page-resume .resume-actions{
-  display: flex;
-  justify-content: flex-end;   /* top-right */
-  margin: 0 0 1rem;
+  display: flex; justify-content: flex-end; margin: 0 0 1rem;
 }
 .page-resume .resume-actions .btn--primary{
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff !important;
+  background: var(--navy); border-color: var(--navy); color: #fff !important;
 }
 @media print{ .page-resume .resume-actions{ display: none !important; } }
 
 /* =============================================================================
    UTILITIES
    ========================================================================== */
-/* Optional utility to center a specific page title by adding class in front matter */
+/* optional: center a specific page title by adding this class in front matter */
 .page__title--center{ text-align: center !important; }
