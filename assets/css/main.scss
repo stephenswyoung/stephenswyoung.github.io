@@ -1,6 +1,6 @@
 ---
 ---
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes/skins/default";  /* use the same skin set in _config.yml */
 @import "minimal-mistakes";
 
 /* Custom overrides */
@@ -56,3 +56,5 @@
   background: #fff;
   padding: .25rem .75rem;
 }
+
+html { outline: 4px solid magenta; }
