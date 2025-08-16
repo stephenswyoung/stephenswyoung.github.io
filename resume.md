@@ -4,11 +4,7 @@ title: "Resume"
 permalink: /resume/
 author_profile: false
 ---
-
-# Resume
-
-[📄 Download PDF](/assets/docs/stephen-young-resume.pdf)
-
+[Download Here](/assets/docs/stephen-young-resume.pdf)
 ---
 
 ## Education
