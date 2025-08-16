@@ -1,0 +1,16 @@
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+/* Custom overrides */
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+}
+.site-title {
+  display: none;           
+}
+.masthead__menu {
+  margin-left: 0;          
+  flex: 1;                 
+  justify-content: flex-start;
+}
