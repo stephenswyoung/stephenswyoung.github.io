@@ -118,27 +118,26 @@
   .layout--home .page__content{ max-width:100%; flex:1 1 auto; }
 }
 
-/* =============================================================================
-   AUTHOR BOX
-   - Light blue background + navy border, wider on home
-   ========================================================================== */
+/* ============================================================
+   AUTHOR BOX (homepage only)
+   ============================================================ */
 
-.author__profile,
-.author__content{ /* cover inner wrapper too so it doesn't look white */
-  background:var(--blue-light);
-  border:2px solid var(--navy);
-  border-radius:12px;
+.author__profile {
+  background-color: #e6f2fa;   /* light blue background */
+  border: none;                /* remove border */
+  border-radius: 12px;         /* optional rounded edges */
+  padding: 1.5rem;             /* give it some breathing room */
+  color: #0f172a;              /* dark navy text for contrast */
 }
 
-/* Padding + width tuning */
-.author__profile{
-  padding:1rem;
+.author__avatar img {
+  border-radius: 50%;          /* keep avatar circular */
+  border: 3px solid #0f172a;   /* subtle dark navy ring around avatar */
 }
 
-/* Wider & left-aligned on home (since it sits in the sidebar) */
-.layout--home .author__profile{
-  width:100%;
-  margin:0;
+.author__content {
+  background: none;            /* remove any inner white */
+  padding: 0;
 }
 
 /* =============================================================================
