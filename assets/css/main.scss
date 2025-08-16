@@ -3,325 +3,188 @@
 /* =============================================================================
    Minimal Mistakes base imports
    ========================================================================== */
-@import "minimal-mistakes/skins/default"; /* match _config.yml */
+@import "minimal-mistakes/skins/default"; /* match your _config.yml skin */
 @import "minimal-mistakes";
 
 /* =============================================================================
    THEME TOKENS (palette)
    ========================================================================== */
 :root{
-  --navy:#1E3A8A;           /* dark border / brand */
+  --navy:#1E3A8A;           /* brand/dark */
   --navy-dk:#172554;        /* hover navy */
-  --blue-verylight:#EFF6FF; /* very light bg */
-  --blue-light:#DBEAFE;     /* cards + author */
+  --blue-verylight:#EFF6FF; /* subtle white-blue */
+  --blue-light:#DBEAFE;     /* cards (projects) */
+  --blue-author:#EAF2FF;    /* softer blue for author box */
 }
 
 /* =============================================================================
-   GLOBAL CONTAINERS + TITLES
-   - Align titles with content and make layout responsive
+   GLOBAL LAYOUT — left-aligned + responsive
+   - Removes the centered column feel; aligns content/titles to the left
    ========================================================================== */
-
-/* Align page header and content to the same centered container */
-.page__header,
-.page__content{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* Page title alignment (no odd offsets) */
-.page__title{
-  text-align: left;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/* Optional: add 'page__title--center' in front matter to center a specific title */
-.page__title--center{ text-align:center; }
-
-/* On very wide screens, allow content to breathe a bit more */
-@media (min-width: 1400px){
-  .page__header,
-  .page__content{ max-width: 1320px; }
-}
-
-/* =============================================================================
-   MASTHEAD / NAV
-   - Solid blue bar, white links, logo support
-   ========================================================================== */
-
-/* Hide text title (we'll replace with a clickable logo) */
-.site-title{ font-size:0; }
-
-/* Clickable logo (add /assets/images/logo.png) */
-.site-title a{
-  display:inline-block;
-  background:url("/assets/images/logo.png") no-repeat center;
-  background-size:contain;
-  width:140px; /* adjust to your logo */
-  height:40px; /* adjust to your logo */
-  text-indent:-9999px;
-}
-
-.masthead{ background:var(--navy); border-bottom:0; }
-.masthead__inner-wrap{ display:flex; align-items:center; }
-.masthead__menu{ margin-left:0; flex:1; justify-content:flex-start; }
-
-.greedy-nav{
-  background:transparent;
-  border:0;
-  box-shadow:none;
-  padding:.3rem .75rem;
-}
-.greedy-nav a,
-.greedy-nav .visible-links a{ color:#fff !important; }
-.greedy-nav a:hover,
-.greedy-nav .visible-links a:hover{ color:var(--blue-verylight) !important; text-decoration:none; }
-.greedy-nav__toggle{ color:#fff; border-color:rgba(255,255,255,.35); }
-.greedy-nav .hidden-links{ background:var(--navy); border:0; }
-.greedy-nav .hidden-links a{ color:#fff !important; }
-
-/* =============================================================================
-   HOME LAYOUT (two-column, responsive)
-   - Author box on the far left, content uses remaining width
-   ========================================================================== */
-
-.layout--home .page__inner-wrap{
-  display:flex;
-  flex-direction:row;
-  align-items:flex-start;
-  gap:1.25rem;
-}
-
-/* Left sidebar column (holds the author box) */
-.layout--home .sidebar{
-  order:0;
-  flex:0 0 320px;
-  max-width:320px;
-}
-
-/* Main content expands to reduce whitespace */
-.layout--home .page__content{
-  order:1;
-  flex:1 1 auto;
-  max-width:none;
-  width:100%;
-  padding-left:0;
-  padding-right:0;
-}
-
-/* Stack on mobile */
-@media (max-width: 768px){
-  .layout--home .page__inner-wrap{ flex-direction:column; }
-  .layout--home .sidebar,
-  .layout--home .page__content{ max-width:100%; flex:1 1 auto; }
-}
-
-/* ============================================================
-   AUTHOR BOX (homepage only)
-   ============================================================ */
-
-.author__profile {
-  background-color: #e6f2fa;   /* light blue background */
-  border: none;                /* remove border */
-  border-radius: 12px;         /* optional rounded edges */
-  padding: 1.5rem;             /* give it some breathing room */
-  color: #0f172a;              /* dark navy text for contrast */
-}
-
-.author__avatar img {
-  border-radius: 50%;          /* keep avatar circular */
-  border: 3px solid #0f172a;   /* subtle dark navy ring around avatar */
-}
-
-.author__content {
-  background: none;            /* remove any inner white */
-  padding: 0;
-}
-
-/* =============================================================================
-   PROJECT CARDS (feature_row)
-   - Rounded, thicker borders, fix white top corners, image polish
-   ========================================================================== */
-
-.feature__wrapper .feature__item{
-  background:var(--blue-light);
-  border:3px solid var(--navy);
-  border-radius:16px;
-  padding:1rem;
-  overflow:hidden; /* CRITICAL: clips the image so top corners aren't white */
-}
-
-/* Teaser image fills and respects rounded corners */
-.feature__wrapper .archive__item-teaser{
-  margin-bottom:.75rem;
-  overflow:hidden;
-}
-.feature__wrapper .archive__item-teaser img{
-  display:block;
-  width:100%;
-  height:220px;         /* adjust to taste */
-  object-fit:cover;
-  border-radius:0;      /* clipping handled by parent overflow */
-}
-
-/* Button color on project cards */
-.feature__wrapper .btn,
-.feature__wrapper .btn--primary{
-  background:var(--navy);
-  border-color:var(--navy);
-  color:#fff !important;
-}
-.feature__wrapper .btn:hover,
-.feature__wrapper .btn--primary:hover{
-  background:var(--navy-dk);
-  border-color:var(--navy-dk);
-  color:#fff !important;
-}
-
-/* Hover elevation on cards */
-.feature__wrapper .feature__item:hover{
-  box-shadow:0 6px 20px rgba(30,58,138,.25);
-  transform:translateY(-2px);
-  transition:all .2s ease;
-}
-
-/* =============================================================================
-   Resume page polish
-   ========================================================================== */
-
-/* Make the PDF button primary and hide on print */
-.page-resume .btn--primary { background: var(--navy); border-color: var(--navy); color: #fff; }
-@media print {
-  .page-resume .btn,
-  .page-resume .btn--primary { display: none !important; }
-}
-
-/* Optional: tighter spacing for resume body */
-.page-resume .page__content h2 { margin-top: 1.75rem; }
-.page-resume .page__content ul { margin-top: .25rem; }
-
-/* =============================================================================
-   UTILITIES
-   ========================================================================== */
-
-/* Optional: center a given page title by adding 'page__title--center' class */
-.page__title--center{ text-align:center; }
-
-
-/* =============================================================================
-   GLOBAL LAYOUT — left-align + responsive
-   - Removes the “centered column” feel and lets content expand with the screen
-   ========================================================================== */
-.page__inner_wrap, /* (typo-resistant alias) */
 .page__inner-wrap,
 .page__header,
 .page__content {
-  max-width: none;           /* full width */
+  max-width: none;            /* allow full width */
   width: 100%;
-  margin: 0;                 /* no auto-centering */
-  padding-left: clamp(12px, 2vw, 20px);
-  padding-right: clamp(12px, 2vw, 20px);
+  margin: 0;                  /* no auto-centering */
+  padding-left: clamp(12px, 2vw, 24px);
+  padding-right: clamp(12px, 2vw, 24px);
 }
 
-/* Optional: keep very large screens readable (remove if you truly want 100% bleed) */
-@media (min-width: 1600px) {
+/* Keep page titles aligned with content (no stray centering) */
+.page__title {
+  text-align: left !important;
+  margin: 0 0 .5rem 0 !important;
+  padding: 0 !important;
+}
+
+/* Optional: cap readability on ultra-wide screens (remove if you want full bleed) */
+@media (min-width: 1600px){
   .page__content { max-width: 1600px; }
 }
 
-/* Keep page titles aligned with content (no stray offsets) */
-.page__title { text-align: left; margin-left: 0; padding-left: 0; }
-
 /* =============================================================================
-   AUTHOR BOX — make the ENTIRE box a lighter blue (no white parts, no border)
-   - Scoped to the home page so other pages aren’t affected
+   MASTHEAD / NAV (unchanged look; keeps your blue bar + white links)
    ========================================================================== */
-:root {
-  --navy: #1E3A8A;
-  --navy-dk: #172554;
-  --blue-verylight: #EFF6FF;
-  --blue-light: #DBEAFE;
-  --blue-author: #EAF2FF;   /* softer, lighter than card blue */
+.masthead { background: var(--navy); border-bottom: 0; }
+.masthead__inner-wrap { display: flex; align-items: center; }
+.masthead__menu { margin-left: 0; flex: 1; justify-content: flex-start; }
+.greedy-nav { background: transparent; border: 0; box-shadow: none; padding: .3rem .75rem; }
+.greedy-nav a,
+.greedy-nav .visible-links a { color: #fff !important; }
+.greedy-nav a:hover,
+.greedy-nav .visible-links a:hover { color: var(--blue-verylight) !important; text-decoration: none; }
+.greedy-nav__toggle { color: #fff; border-color: rgba(255,255,255,.35); }
+.greedy-nav .hidden-links { background: var(--navy); border: 0; }
+.greedy-nav .hidden-links a { color: #fff !important; }
+
+/* Replace text site-title with a clickable logo (optional; keep if you added logo.png) */
+.site-title { font-size: 0; }
+.site-title a {
+  display: inline-block;
+  background: url("/assets/images/logo.png") no-repeat center;
+  background-size: contain;
+  width: 140px;  /* adjust to your logo width */
+  height: 40px;  /* adjust to your logo height */
+  text-indent: -9999px;
 }
 
+/* =============================================================================
+   HOME LAYOUT — author column on the far left
+   - Sidebar (author box) fixed width on the left; main content uses remaining space
+   ========================================================================== */
+.layout--home .page__inner-wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+/* Left sidebar column */
+.layout--home .sidebar{
+  order: 0;
+  flex: 0 0 320px;
+  max-width: 320px;
+}
+
+/* Main content grows; reduces whitespace */
+.layout--home .page__content{
+  order: 1;
+  flex: 1 1 auto;
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Stack author above content on mobile */
+@media (max-width: 768px){
+  .layout--home .page__inner-wrap{ flex-direction: column; }
+  .layout--home .sidebar,
+  .layout--home .page__content{ max-width: 100%; flex: 1 1 auto; }
+}
+
+/* =============================================================================
+   AUTHOR BOX — entire box light blue (no white inner sections), no border
+   ========================================================================== */
 /* Outer wrapper */
-.layout--home .author__profile {
+.layout--home .author__profile{
   background: var(--blue-author) !important;
   border: 0 !important;
   border-radius: 12px;
   padding: 1.25rem 1rem;
   color: #0f172a;
-  box-shadow: none;
-  margin: 0; /* if you use a left sidebar layout, this keeps it flush */
+  box-shadow: none !important;
+  margin: 0; /* flush in the left column */
 }
 
-/* Inner parts that Minimal Mistakes renders as white by default */
+/* Nuke inner white panels MM adds */
 .layout--home .author__content,
 .layout--home .author__bio,
 .layout--home .author__urls-wrapper,
-.layout--home .author__urls,
-.layout--home .author__urls li,
-.layout--home .author__urls a {
-  background: transparent !important;  /* inherit the blue */
+.layout--home .author__urls{
+  background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
 }
 
-/* Avatar ring (optional) */
-.layout--home .author__avatar img {
+/* Keep avatar circular with a subtle brand ring (optional) */
+.layout--home .author__avatar img{
   border-radius: 50%;
   border: 3px solid var(--navy);
 }
 
 /* =============================================================================
-   PROJECT CARDS — keep your rounded, thicker borders and fix white top corners
+   PROJECT CARDS (feature_row) — rounded, thicker borders; fix white top corners
    ========================================================================== */
-.feature__wrapper .feature__item {
+.feature__wrapper .feature__item{
   background: var(--blue-light);
   border: 3px solid var(--navy);
   border-radius: 16px;
   padding: 1rem;
-  overflow: hidden; /* critical so the image corners clip to the radius */
+  overflow: hidden; /* ensures teaser image corners clip */
 }
-.feature__wrapper .archive__item-teaser {
+.feature__wrapper .archive__item-teaser{
   margin-bottom: .75rem;
   overflow: hidden;
 }
-.feature__wrapper .archive__item-teaser img {
+.feature__wrapper .archive__item-teaser img{
   display: block;
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-radius: 0; /* the parent handles rounding via overflow */
+  border-radius: 0;
 }
-
 /* Buttons on project cards (navy) */
 .feature__wrapper .btn,
-.feature__wrapper .btn--primary {
+.feature__wrapper .btn--primary{
   background: var(--navy);
   border-color: var(--navy);
   color: #fff !important;
 }
 .feature__wrapper .btn:hover,
-.feature__wrapper .btn--primary:hover {
+.feature__wrapper .btn--primary:hover{
   background: var(--navy-dk);
   border-color: var(--navy-dk);
 }
 
 /* =============================================================================
-   RESUME PAGE — clean “Download PDF” button, top-right of the content
+   RESUME PAGE — cleaner top-right "Download PDF" action
    ========================================================================== */
-.page-resume .resume-actions {
+.page-resume .resume-actions{
   display: flex;
-  justify-content: flex-end; /* right side */
-  margin: 0 0 1rem;          /* space below the button row */
+  justify-content: flex-end;   /* top-right */
+  margin: 0 0 1rem;
 }
-.page-resume .resume-actions .btn--primary {
+.page-resume .resume-actions .btn--primary{
   background: var(--navy);
   border-color: var(--navy);
   color: #fff !important;
 }
-@media print {
-  .page-resume .resume-actions { display: none !important; } /* hide button on print */
-}
+@media print{ .page-resume .resume-actions{ display: none !important; } }
+
+/* =============================================================================
+   UTILITIES
+   ========================================================================== */
+/* Optional utility to center a specific page title by adding class in front matter */
+.page__title--center{ text-align: center !important; }
