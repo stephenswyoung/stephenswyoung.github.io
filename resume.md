@@ -15,8 +15,8 @@ classes: page-resume
 
 **Master of Science in Artificial Intelligence** — The University of Texas at Austin  
 *Expected December 2026*  
-GPA: 3.665 / 4.0  
-Relevant Coursework: Machine Learning, Ethics of AI  
+GPA: 3.767 / 4.0  
+Relevant Coursework: Deep Learning, Machine Learning, Ethics of AI  
 
 **Bachelor of Science in Computer Engineering (Software Engineering)** — The University of Texas at Austin  
 *May 2024*  

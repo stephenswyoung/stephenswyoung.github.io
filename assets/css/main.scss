@@ -14,46 +14,39 @@
   --navy-dk:#172554;        /* hover navy */
   --blue-verylight:#EFF6FF; /* subtle white-blue */
   --blue-light:#DBEAFE;     /* project cards */
-  --blue-author:#EAF2FF;    /* author box (lighter than cards) */
+  --blue-author:#EAF2FF;    /* author box/sidebar (lighter than cards) */
 }
 
 /* =============================================================================
    GLOBAL LAYOUT — left-aligned + responsive
-   - Remove the centered column feel everywhere
    ========================================================================== */
-.page__inner-wrap,
+/* Remove the centered column feel and align content/titles to the left */
+.initial-content .page,
+.page,
 .page__header,
-.page__content{
-  max-width: none;
-  width: 100%;
-  margin: 0;
-  padding-left: clamp(12px, 2vw, 24px);
-  padding-right: clamp(12px, 2vw, 24px);
+.page__content,
+.page__inner-wrap{
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px) !important;
+  padding-right: clamp(12px, 2vw, 24px) !important;
 }
 
-/* Align ALL page titles with the content column */
+/* Align ALL page titles with the content column (Projects + Resume + Home) */
 .page__title{
   text-align: left !important;
   margin: 0 0 .5rem 0 !important;
   padding: 0 !important;
 }
 
-/* Make sure single-page layouts (Projects, Resume) inherit the same alignment */
-.layout--single .page__header,
-.layout--single .page__content{
-  max-width: none !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-.layout--single .page__title{
-  text-align: left !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+/* Optional: cap readability on ultra-wide screens (remove if you want full bleed) */
+@media (min-width: 1600px){
+  .page__content{ max-width: 1600px; }
 }
 
 /* =============================================================================
-   MASTHEAD / NAV (keeps your blue bar + white links)
+   MASTHEAD / NAV (keeps your solid blue bar + white links)
    ========================================================================== */
 .masthead{ background: var(--navy); border-bottom: 0; }
 .masthead__inner-wrap{ display: flex; align-items: center; }
@@ -75,7 +68,7 @@
 }
 
 /* =============================================================================
-   HOME LAYOUT — author column on the far left
+   HOME LAYOUT — author sidebar on the far left
    ========================================================================== */
 .layout--home .page__inner-wrap{
   display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem;
@@ -93,35 +86,31 @@
 }
 
 /* =============================================================================
-   AUTHOR BOX — entire box light blue (no white inside), no border
+   AUTHOR BOX — entire sidebar light blue (no white inside), no border
    ========================================================================== */
-/* Target the exact structure MM outputs in the home sidebar */
-.layout--home .sidebar .author__profile{
+/* Paint the whole sidebar block (which contains the author profile) */
+.layout--home .sidebar{
   background: var(--blue-author) !important;
   border: 0 !important;
   border-radius: 12px;
-  padding: 1.25rem 1rem;
+  padding: 1rem !important;
   box-shadow: none !important;
-  margin: 0; /* flush to the left column */
-  color: #0f172a;
 }
 
-/* Remove any inner white panels */
-.layout--home .sidebar .author__profile > .author__avatar,
-.layout--home .sidebar .author__profile > .author__content,
-.layout--home .sidebar .author__profile .author__bio,
-.layout--home .sidebar .author__profile .author__urls-wrapper,
-.layout--home .sidebar .author__profile .author__urls{
+/* Remove any inner whites from the author pieces */
+.layout--home .sidebar .author__avatar,
+.layout--home .sidebar .author__content,
+.layout--home .sidebar .author__urls-wrapper,
+.layout--home .sidebar .author__urls{
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
   padding-left: 0; padding-right: 0;
 }
 
-/* Keep avatar circular, but no extra border ring */
+/* Keep the headshot unchanged (no extra ring) */
 .layout--home .sidebar .author__avatar img{
-  border-radius: 50%;
-  border: none;
+  border: none; border-radius: 50%;
 }
 
 /* =============================================================================
@@ -161,5 +150,5 @@
 /* =============================================================================
    UTILITIES
    ========================================================================== */
-/* optional: center a specific page title by adding this class in front matter */
+/* Optional: center a specific page title by adding this class in page front matter */
 .page__title--center{ text-align: center !important; }
