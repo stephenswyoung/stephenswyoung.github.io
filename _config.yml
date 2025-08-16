@@ -17,7 +17,7 @@ plugins:
 # Author box
 author:
   name: Stephen Young
-  avatar: /assets/images/author-box/headshot.jpg
+  avatar: /assets/images/author-box/headshot.png
   bio: "Software Engineer II @ Walmart Global Tech."
 
 # Header masthead links come from _data/navigation.yml
