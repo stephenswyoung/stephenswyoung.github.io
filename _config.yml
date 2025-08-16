@@ -17,6 +17,10 @@ author:
   name: Stephen Young
   avatar: /assets/images/author-box/headshot.png
   bio: "Hi, I am currently a Software Engineer II @ Walmart Global Tech. I graduated from the University of Texas at Austin with a B.S. in Electrical and Computer Engineering in 2024. I am currently pursuing a Master's Degree in AI from the University of Texas at Austin while I work. I am interested in Machine Learning, AI, and Network Theory."
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/stephen-southworth-young/"
 
 # Header masthead links come from _data/navigation.yml
 
