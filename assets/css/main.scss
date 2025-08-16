@@ -19,9 +19,9 @@
 
 /* ==== Projects page (feature_row) cards ==== */
 .feature__wrapper .feature__item {
-  border: 1px solid #d1d5db;   /* visible light gray */
+  border: 1px solid #1E3A8A;   /* Navy Blue */
   border-radius: 12px;
-  background: #fff;
+  background: #DBEAFE;
   padding: 1rem;
 }
 
@@ -33,28 +33,25 @@
 
 /* Hover pop */
 .feature__wrapper .feature__item:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25); /* navy shadow */
   transform: translateY(-2px);
   transition: all .2s ease;
 }
 
-/* ==== Author box (shown when author_profile: true) ==== */
+/* ==== Author box ==== */
 .author__profile {
-  border: 1px solid #d1d5db;
+  border: 2px solid #1E3A8A;
   border-radius: 12px;
-  background: #fff;
+  background: #DBEAFE;
   padding: 1rem;
 }
 
 /* ==== Navigation bar ==== */
-.masthead { border-bottom: 2px solid #d1d5db; }
-
-/* Make the whole masthead look like a bordered bar (optional) */
-.greedy-nav {
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #fff;
-  padding: .25rem .75rem;
+.masthead {
+  border-bottom: 2px solid #1E3A8A;
 }
-
-html { outline: 4px solid magenta; }
+.greedy-nav {
+  border: 1px solid #1E3A8A;
+  border-radius: 8px;
+  background: #EFF6FF;  /* very light blue */
+}
