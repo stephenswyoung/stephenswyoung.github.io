@@ -15,3 +15,18 @@
   flex: 1;                 
   justify-content: flex-start;
 }
+
+/* Add borders around feature_row cards */
+.archive__item {
+  border: 1px solid #e5e7eb; /* light gray border */
+  border-radius: 8px;        /* rounded corners */
+  padding: 1rem;             /* add some inner spacing */
+  background: #fff;          /* white background so the border shows */
+  box-shadow: 0 2px 6px rgba(0,0,0,.04); /* optional subtle shadow */
+}
+
+.archive__item:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,.08); /* elevate on hover */
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
