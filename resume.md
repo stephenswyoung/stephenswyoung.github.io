@@ -3,9 +3,13 @@ layout: single
 title: "Resume"
 permalink: /resume/
 author_profile: false
+classes: page-resume
 ---
-[Download Here](/assets/docs/stephen-young-resume.pdf)
----
+
+<div class="resume-actions">
+  <a class="btn btn--primary" href="/assets/docs/stephen-young-resume.pdf">Download PDF</a>
+</div>
+
 
 ## Education
 

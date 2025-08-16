@@ -208,3 +208,120 @@
 
 /* Optional: center a given page title by adding 'page__title--center' class */
 .page__title--center{ text-align:center; }
+
+
+/* =============================================================================
+   GLOBAL LAYOUT — left-align + responsive
+   - Removes the “centered column” feel and lets content expand with the screen
+   ========================================================================== */
+.page__inner_wrap, /* (typo-resistant alias) */
+.page__inner-wrap,
+.page__header,
+.page__content {
+  max-width: none;           /* full width */
+  width: 100%;
+  margin: 0;                 /* no auto-centering */
+  padding-left: clamp(12px, 2vw, 20px);
+  padding-right: clamp(12px, 2vw, 20px);
+}
+
+/* Optional: keep very large screens readable (remove if you truly want 100% bleed) */
+@media (min-width: 1600px) {
+  .page__content { max-width: 1600px; }
+}
+
+/* Keep page titles aligned with content (no stray offsets) */
+.page__title { text-align: left; margin-left: 0; padding-left: 0; }
+
+/* =============================================================================
+   AUTHOR BOX — make the ENTIRE box a lighter blue (no white parts, no border)
+   - Scoped to the home page so other pages aren’t affected
+   ========================================================================== */
+:root {
+  --navy: #1E3A8A;
+  --navy-dk: #172554;
+  --blue-verylight: #EFF6FF;
+  --blue-light: #DBEAFE;
+  --blue-author: #EAF2FF;   /* softer, lighter than card blue */
+}
+
+/* Outer wrapper */
+.layout--home .author__profile {
+  background: var(--blue-author) !important;
+  border: 0 !important;
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  color: #0f172a;
+  box-shadow: none;
+  margin: 0; /* if you use a left sidebar layout, this keeps it flush */
+}
+
+/* Inner parts that Minimal Mistakes renders as white by default */
+.layout--home .author__content,
+.layout--home .author__bio,
+.layout--home .author__urls-wrapper,
+.layout--home .author__urls,
+.layout--home .author__urls li,
+.layout--home .author__urls a {
+  background: transparent !important;  /* inherit the blue */
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Avatar ring (optional) */
+.layout--home .author__avatar img {
+  border-radius: 50%;
+  border: 3px solid var(--navy);
+}
+
+/* =============================================================================
+   PROJECT CARDS — keep your rounded, thicker borders and fix white top corners
+   ========================================================================== */
+.feature__wrapper .feature__item {
+  background: var(--blue-light);
+  border: 3px solid var(--navy);
+  border-radius: 16px;
+  padding: 1rem;
+  overflow: hidden; /* critical so the image corners clip to the radius */
+}
+.feature__wrapper .archive__item-teaser {
+  margin-bottom: .75rem;
+  overflow: hidden;
+}
+.feature__wrapper .archive__item-teaser img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0; /* the parent handles rounding via overflow */
+}
+
+/* Buttons on project cards (navy) */
+.feature__wrapper .btn,
+.feature__wrapper .btn--primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff !important;
+}
+.feature__wrapper .btn:hover,
+.feature__wrapper .btn--primary:hover {
+  background: var(--navy-dk);
+  border-color: var(--navy-dk);
+}
+
+/* =============================================================================
+   RESUME PAGE — clean “Download PDF” button, top-right of the content
+   ========================================================================== */
+.page-resume .resume-actions {
+  display: flex;
+  justify-content: flex-end; /* right side */
+  margin: 0 0 1rem;          /* space below the button row */
+}
+.page-resume .resume-actions .btn--primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff !important;
+}
+@media print {
+  .page-resume .resume-actions { display: none !important; } /* hide button on print */
+}
