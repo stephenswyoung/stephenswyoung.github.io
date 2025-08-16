@@ -270,3 +270,24 @@
   margin: 0 0 .5rem 0 !important;
   padding: 0 !important;
 }
+
+/* =============================================================================
+   PROJECTS PAGE: left-align like resume (no sidebar present)
+   ========================================================================== */
+
+.layout--projects #main,
+.layout--projects #main .archive,
+.layout--projects #main .page__inner-wrap {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px) !important;
+  padding-right: clamp(12px, 2vw, 24px) !important;
+}
+
+/* Ensure the page title is aligned left */
+.layout--projects #main .page__title {
+  text-align: left !important;
+  margin: 0 0 .5rem 0 !important;
+  padding: 0 !important;
+}
