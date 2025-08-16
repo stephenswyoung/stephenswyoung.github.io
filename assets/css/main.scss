@@ -189,6 +189,21 @@
 }
 
 /* =============================================================================
+   Resume page polish
+   ========================================================================== */
+
+/* Make the PDF button primary and hide on print */
+.page-resume .btn--primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+@media print {
+  .page-resume .btn,
+  .page-resume .btn--primary { display: none !important; }
+}
+
+/* Optional: tighter spacing for resume body */
+.page-resume .page__content h2 { margin-top: 1.75rem; }
+.page-resume .page__content ul { margin-top: .25rem; }
+
+/* =============================================================================
    UTILITIES
    ========================================================================== */
 
