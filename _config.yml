@@ -4,6 +4,8 @@ baseurl: ""
 
 remote_theme: mmistakes/minimal-mistakes
 
+sass:
+  sass_dir: ../assets/css
 
 minimal_mistakes_skin: default
 
