@@ -101,6 +101,12 @@
 }
 .layout--home .sidebar .author__avatar img{ border:none; border-radius:50%; }
 
+/* Add breathing room below masthead for home page title */
+.archive .page__title {
+  margin-top: 2rem;   /* pushes it down */
+  margin-bottom: 1rem; /* optional, space below */
+}
+
 /* =============================================================================
    SINGLE PAGES (Projects, etc.) — flush-left/full-width
    NOTE: excludes Resume by class so Resume stays standard MM layout.
@@ -144,6 +150,16 @@
 }
 .feature__wrapper .btn:hover, .feature__wrapper .btn--primary:hover{
   background:var(--navy-dk); border-color:var(--navy-dk);
+}
+
+/* Project card hover effect */
+.feature__item .archive__item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature__item .archive__item:hover {
+  transform: scale(1.03); 
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* =============================================================================
