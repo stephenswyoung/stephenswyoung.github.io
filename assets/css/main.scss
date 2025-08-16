@@ -291,3 +291,37 @@
   margin: 0 0 .5rem 0 !important;
   padding: 0 !important;
 }
+
+/* =============================================================================
+   PROJECTS (layout: single) — flush-left, no centered container
+   Targets the exact structure you posted:
+   #main > article.page > .page__inner-wrap > header + section.page__content
+   ========================================================================== */
+
+.layout--single #main,
+.layout--single #main > .page,
+.layout--single #main > .page .page__inner-wrap,
+.layout--single #main > .page .page__header,
+.layout--single #main > .page .page__content,
+.layout--single #main > .page .wrap {
+  max-width: none !important;     /* remove the theme's width cap */
+  width: 100% !important;
+  margin-left: 0 !important;      /* kill auto-centering */
+  margin-right: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px) !important;  /* responsive gutter */
+  padding-right: clamp(12px, 2vw, 24px) !important;
+}
+
+/* Title alignment for Projects (and other single pages) */
+.layout--single #main .page__title {
+  text-align: left !important;
+  margin: 0 0 .5rem 0 !important;
+  padding: 0 !important;
+}
+
+/* Make the feature cards sit flush with this left alignment too */
+.layout--single #main .feature__wrapper {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
