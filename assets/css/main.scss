@@ -126,6 +126,14 @@
   padding-right: clamp(12px, 2vw, 24px) !important;
 }
 
+.page.projects-page #page-title,
+.page.projects-page .page__title {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+}
+
 /* =============================================================================
    PROJECT CARDS (feature_row) — rounded, thicker borders; clip top corners;
    HOVER SCALE: entire card (bg + border) grows, not just inner content
