@@ -184,44 +184,89 @@
 }
 @media print{ .page-resume .resume-actions{ display: none !important; } }
 
-
-/* =============================================================================
-   FORCE FULL-WIDTH LEFT-ALIGNED PAGE HEADERS (Resume, Projects, etc.)
-   ========================================================================== */
-
-/* Remove the max-width and centered margins */
-.page,
-.page__inner-wrap {
-  max-width: none !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  width: 100% !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-
-/* Make sure headers inside these pages align left */
-.page__header {
-  max-width: none !important;
-  margin: 0 !important;
-  padding-left: clamp(12px, 2vw, 24px) !important;
-  padding-right: clamp(12px, 2vw, 24px) !important;
-}
-
-.page__header .wrap {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.page__title {
-  text-align: left !important;
-  margin: 0 0 .5rem 0 !important;
-  padding: 0 !important;
-}
-
 /* =============================================================================
    UTILITIES
    ========================================================================== */
 /* Center a specific page title by adding this class in page front matter (optional) */
 .page__title--center{ text-align: center !important; }
+
+/* =============================================================================
+   HOME: make #main a 2-col layout (sidebar on the left, content starts next to it)
+   ========================================================================== */
+
+/* Turn the #main container into a responsive 2-column grid on the home page */
+.layout--home #main {
+  display: grid;
+  grid-template-columns: 320px 1fr;   /* left fixed (sidebar), right flexible (content) */
+  gap: 1.25rem;
+  align-items: start;
+  /* remove any stray centering constraints */
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px);
+  padding-right: clamp(12px, 2vw, 24px);
+}
+
+/* Sidebar column: keep your sticky behavior and remove extra margins */
+.layout--home #main .sidebar {
+  grid-column: 1;
+  margin: 0 !important;
+  max-width: 320px;
+  width: 100%;
+  /* keep your blue author box look if you set it earlier */
+  background: var(--blue-author, transparent);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Content column: start exactly where the sidebar ends, no side whitespace */
+.layout--home #main .archive {
+  grid-column: 2;
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0; /* relies on #main padding */
+}
+
+/* Home page title alignment */
+.layout--home #main .archive .page__title {
+  text-align: left !important;
+  margin: 0 0 .5rem 0 !important;
+  padding: 0 !important;
+}
+
+/* Stack on narrow screens */
+@media (max-width: 900px) {
+  .layout--home #main {
+    grid-template-columns: 1fr; /* single column */
+  }
+  .layout--home #main .sidebar,
+  .layout--home #main .archive {
+    grid-column: 1;
+    max-width: 100% !important;
+  }
+}
+
+/* =============================================================================
+   PROJECTS & RESUME: left-align page header and remove centered constraints
+   ========================================================================== */
+
+/* Remove MM's centered container feel on single pages */
+.layout--single .page__header,
+.layout--single .page__content,
+.layout--single .page__header .wrap,
+.layout--single .page__inner-wrap {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: clamp(12px, 2vw, 24px) !important;
+  padding-right: clamp(12px, 2vw, 24px) !important;
+}
+
+/* Align titles for Projects and Resume */
+.layout--single .page__title {
+  text-align: left !important;
+  margin: 0 0 .5rem 0 !important;
+  padding: 0 !important;
+}
